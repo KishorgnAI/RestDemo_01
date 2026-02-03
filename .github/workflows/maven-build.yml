@@ -1,5 +1,4 @@
 name: Maven Build
-
 on:
   push:
     branches: [ main, master, develop ]
@@ -13,18 +12,30 @@ jobs:
 
     steps:
       - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Debug - List files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files in current directory:"
+          ls -la
+          echo "Looking for pom.xml:"
+          find . -name "pom.xml"
+
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
-          
+
       - name: Build with Maven
         run: mvn clean package -DskipTests
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: RestDemo_01
+          name: CompactDiscRestDataBoot
           path: target/*.jar
           retention-days: 30
 
