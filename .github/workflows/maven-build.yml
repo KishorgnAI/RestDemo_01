@@ -36,8 +36,8 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: CompactDiscRestDataBoot
-          path: Solutions/workspace/CompactDiscDaoWithRestAndBoot/target/*.jar
+          name: RestDemo_01
+          path: RestDemo_01/target/*.jar
           retention-days: 30
 
       - name: Display build info
